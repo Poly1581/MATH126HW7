@@ -1,0 +1,133 @@
+\documentclass[12pt]{amsart}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{cancel}
+\usepackage{graphicx}
+\def\R{{\hbox{\bf R}}}
+\def\C{{\hbox{\bf C}}}
+\def\Q{{\hbox{\bf Q}}}
+\def\G{{\hbox{\bf G}}}
+\def\P{{\hbox{\bf P}}}
+\def\E{{\hbox{\bf E}}}
+\def\V{{\hbox{\bf V}}}
+\def\v{{\hbox{\bf v}}}
+\def\f{{\overline{f}}}
+\font \roman = cmr10 at 10 true pt
+\def\Z{{\hbox{\bf Z}}}
+\def\U{{\hbox{\bf U}}}
+\def\A{{\hbox{\bf A}}}
+\def\eps{\varepsilon}
+\def\RZ{  {\mathbb R} \backslash {\mathbb Z} }
+\def\Span{\hbox{ \rm Span} \,\,\, }
+\def\ep{{\epsilon}}
+\def\rfl {\rfloor}
+\def\lfl {\lfloor}
+\def\CF{{\hbox {\bf F}}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1cm plus4mm minus3mm}
+\input{macros.tex}
+\begin{document}
+
+\begin{center}
+{\bf Math 126 HW 7, due 5/25}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNINISHED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM  1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+\begin{itemize}
+	\item[\textbf{1a:}] How many possible arrangements are there of the letters in the word STREETS?
+	\item[\textbf{1b:}] How many of these arrangements have the two E's adjacent to eachother? (Hint: If you glue tthe two E's together, you are effectively only arranging $6$ letters instead of $7$)
+	\item[\textbf{1c:}] How many of those arrangments have \textbf{no} two of the same letter adjacent?
+\end{itemize}
+\end{problem}
+\begin{solution}
+\begin{itemize}
+	\item[\textbf{1a:}] There are three redundant (repeated) letters (S,T, and E).  We must compensate for them in our calculation of the possible arrangments.  The number of possible arrangements of these letters is $\frac{_7P_7}{(2!)^3} = \frac{5040}{2^3} = 630$.
+	\item[\textbf{1b:}] We can construct one letter double E to replace both of the E's in the word and compute as if it were a proper letter.  This gives the number of arrangements of these letters as $\frac{_6P_6}{(2!)^2} = \frac{720}{4} = 180$.
+	\item[\textbf{1c:}] This is slightly more complicated. We need to use the inclusion-exclusion principle and to do so, we need to calculate a few things (note, I will denote $A(S)$ as the arrangements where S is a list of potentially redundant letters that are required to be adjacent):
+		\begin{itemize}
+			\item{\textbf{Arrangements with no restrictions:}} $A(\emptyset) = \frac{_7P_7}{(2!)^3} = 630$
+			\item{\textbf{$E^s$ adjacent:}} $A(E) = \frac{_6P_6}{(2!)^2} = 180$
+			\item{\textbf{$T^s$ adjacent:}} $A(T) = 180$ (calculated in the same way as $A(E)$)
+			\item{\textbf{$S^s$ adjacent:}} $A(S) = 180$ (calculated in the same way as $A(E)$)
+			\item{\textbf{$E^s$ and $T^s$ adjacent:}} $A(E,T) = \frac{_5P_5}{(2!)^1} = 105$
+			\item{\textbf{$E^s$ and $S^s$ adjacent:}} $A(E,S) = 105$ (calculated in the same way as $A(E,S)$)
+			\item{\textbf{$T^s$ and $S^s$ adjacent:}} $A(T,S) = 105$ (calculated in the same way as $A(E,S)$)
+			\item{\textbf{$E^s$ and $T^s$ and $S^s$ adjacent:}} $A(E,T,S) = \frac{_4P_4}{(2!)^0} = 24$
+		\end{itemize}
+		Now, finally, we can calculate the number of arragnements with no two same letters adjacent as $A(\emptyset) - A(E) - A(T) - A(S) + A(E,T) + A(E,S) + A(T,S) - A(E,T,S) = 630 - 3\cdot180 + 3\cdot105 - 24 = 381$.
+\end{itemize}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNINISHED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM  2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+
+Recall that the chromatic polynomial of the hexagon is $c_{C_6}(k)=(k-1)^6+(k-1)$. Using this and the inclusion-exclusion priciple, determine how many proper colorings of the hexagon there are involving \textit{exactly} $4$ colors (i.e. each vertex is Red, Yellow, Blue, or Green. and each color is used at least once).
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNINISHED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM  3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+For each of the following sequences, find the corresponding generating function "in closed form" (this means that your final answer should not involve any infinite sums)
+\begin{itemize}
+	\item[\textbf{3a:}] $0,0,0,1,0,0,0,0,\dots$ (where $a_3=1$ but all other $a_j$ are zero.
+	\item[\textbf{3b:}] $0,0,0,0,3,3,3,3,\dots$ (where $a_i=0 \forall i \leq 3 \text{ and } a_i=3 \forall i >3$)
+	\item[\textbf{3c:}] $1,2,1,8,1,32,\dots$ (where $a_j=1$ for even $j$ and $2^j$ for odd $j$)
+	\item[\textbf{3d:}] $1,1,1,1,1,1,5,1,1,\dots$ (where $a_6=5$, but all other $a_j$ are $1$)
+	\item[\textbf{3e:}] $a,2,3,4,5,6,7,8,\dots$ (where $a_j=j+1$ for all $j$)
+\end{itemize}
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNINISHED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM  4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+
+For each of the following combinatorial problems, give a function $G(x)$ and a value of $k$ such that the answer to the problem is the $x^k$ coefficient of $G(x)$ (e.g. if I had asked how many subsets of size $7$ there are of a set of size $10$, one answer would be "The $x^7$ coefficient of $(1+x)^{10}$".  You don't need to actually evaluate this coefficient!).
+\begin{itemize}
+	\item[\textbf{4a:}] I roll $10$ dice.  Five of the dice are numbered from $1$ to $6$, and the remaining five numbered from $1$ to $4$.  How many ways can I get a sum of $30$?
+	\item[\textbf{4b:}] I roll $10$ dice.  Each die has $6$ sides, but the sides are numbered $1,2,3,4,5,5$ instead of $1,2,3,4,5,6$ (assume that the $5's$ are distinguishable -- i.e. that for each die there's $2$ ways it can come up $5$). How many ways can I get a sum of $30$?
+	\item[\textbf{4c:}] I have a drawer containing $5$ identical red beads, $6$ identical blue beads, and $4$ identical green beads.  How many ways are there to select $8$ beads from the drawer (e.g. one way is to take $5$ red, $2$ blue, and $1$ green.  Order doesn't matter)?
+	\item[\textbf{4d:}] I have a drawer containing $5$ identical red beads, $6$ identical blue beads, and $4$ identical green beads.  How many ways are there to select $8$ beads from the drawer if I must select at least two beads of each color?
+	\item[\textbf{4e:}] I have a drawer containing $5$ identical red beads, $6$ identical blue beads, and $4$ identical green beads.  How many ways are there to select $8$ beads from the drawer if I must select an even number of each bead?
+\end{itemize}
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% UNINISHED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM  5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+
+Let $b_n$ be the number of ways of choosing $n$ beads out of a drawer containing infinitely many red, yellow, blue, green, and orange beads such that
+\begin{itemize}
+	\item The number of red beads is even
+	\item There is at most one blue bead
+	\item The number of orange beads is either $0$ or $2$
+\end{itemize}
+(there is no restriction on yellow or green beads.)
+\begin{itemize}
+	\item[\textbf{5a:}] Compute the generating function for $b_n$ in closed form
+	\item[\textbf{5b:}] Compute $b_{20}$
+\end{itemize}
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+\end{document}
+
+
